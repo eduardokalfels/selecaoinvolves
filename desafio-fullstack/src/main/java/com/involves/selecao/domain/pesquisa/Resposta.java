@@ -1,4 +1,4 @@
-package com.involves.selecao.alerta;
+package com.involves.selecao.domain.pesquisa;
 
 public class Resposta {
 	

@@ -7,7 +7,7 @@ import org.bson.Document;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.involves.selecao.alerta.Alerta;
+import com.involves.selecao.domain.alerta.Alerta;
 import com.involves.selecao.gateway.mongo.MongoDbFactory;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
@@ -27,7 +27,8 @@ public class AlertaMongoGateway implements AlertaGateway{
                 .append("descricao", alerta.getDescricao())
                 .append("tipo", alerta.getFlTipo())
                 .append("margem", alerta.getMargem())
-                .append("produto", alerta.getProduto());
+                .append("produto", alerta.getProduto())
+                .append("categoria", alerta.getCategoria());
 		collection.insertOne(doc);
 	}
 
@@ -44,6 +45,7 @@ public class AlertaMongoGateway implements AlertaGateway{
 			alerta.setMargem(document.getInteger("margem"));
 			alerta.setPontoDeVenda(document.getString("ponto_de_venda"));
 			alerta.setProduto(document.getString("produto"));
+			alerta.setCategoria(document.getString("categoria"));
 			alertas.add(alerta);
 		}
 		return alertas;
