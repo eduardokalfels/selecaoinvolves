@@ -1,1 +1,16 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'assets/css/material-fonts';
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+$primary: mat-palette($mat-red, 800);
+$accent: mat-palette($mat-amber, 600, A100, A400);
+$warn: mat-palette($mat-red, 600);
+
+$theme: mat-light-theme($primary, $accent, $warn);
+
+@include angular-material-theme($theme);
+
+body {
+    background-color: ghostwhite;
+}

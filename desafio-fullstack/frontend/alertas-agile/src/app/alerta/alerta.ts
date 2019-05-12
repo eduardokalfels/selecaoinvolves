@@ -1,3 +1,5 @@
+import { TipoAlertaEnum } from './tipo-alerta.enum';
+
 export class Alerta {
 
     pontoDeVenda: string;
@@ -5,5 +7,16 @@ export class Alerta {
     produto: string;
     categoria: string;
     margem: number;
+    tipo: TipoAlertaEnum;
+
+    get descricaoTipoAlerta() : string {
+        if(this.tipo === TipoAlertaEnum.RUPTURA) {
+            return "Ruptura"; 
+        } else if(this.tipo === TipoAlertaEnum.PRECO) {
+            return "Preço"; 
+        } else if(this.tipo === TipoAlertaEnum.PARTICIPACAO) {
+            return "Participação"; 
+        }
+    }
 
 }

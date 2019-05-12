@@ -1,3 +1,52 @@
-<p>
-  alerta-card-list works!
-</p>
+<form [formGroup]="form" (ngSubmit)="carregarAlertas()">
+  <mat-form-field>
+    <mat-select placeholder="Tipo de Alerta" formControlName="tipoAlerta">
+      <mat-option *ngFor="let tipoAlerta of tiposAlerta" [value]="tipoAlerta">
+        {{ getDescricaoTipoAlerta(tipoAlerta) }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+      <input matInput placeholder="Ponto de Venda" formControlName="pontoDeVenda">
+    </mat-form-field>
+
+  <button type="button" (click)="limpar()" mat-button>Limpar</button>
+  <button type="submit" mat-button color="primary">Filtrar</button>
+</form>
+
+<mat-grid-list cols="3" rowHeight="200px">
+    <mat-grid-tile
+        *ngFor="let alerta of alertas"
+        [colspan]="1"
+        [rowspan]="1">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{ alerta.descricao }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="linhaCard">
+              <label>Ponto de venda: </label>{{ alerta.pontoDeVenda }}
+          </div>
+
+          <mat-divider></mat-divider>
+
+          <div *ngIf="alerta.produto" class="linhaCard">
+            <label>Produto: </label>{{ alerta.produto }}
+          </div>
+
+          <div *ngIf="alerta.categoria" class="linhaCard">
+            <label>Categoria: </label>{{ alerta.categoria }}
+          </div>
+          
+          <div class="linhaCard" *ngIf="alerta.margem">
+            <mat-divider></mat-divider>
+          </div>
+
+          <div class="linhaCard" *ngIf="alerta.margem">
+            <label>Margem: </label>{{ alerta.margem }}
+          </div>
+        </mat-card-content>
+      </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>
