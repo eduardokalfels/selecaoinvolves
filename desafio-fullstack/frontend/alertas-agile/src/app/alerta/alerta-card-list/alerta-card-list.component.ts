@@ -59,6 +59,16 @@ export class AlertaCardListComponent implements OnInit {
     }
   }
 
+  getIconeTipoAlerta(alerta: Alerta): string {
+    if(alerta.tipo === TipoAlertaEnum.RUPTURA) {
+      return 'fa-unlink';
+    } else if(alerta.tipo === TipoAlertaEnum.PRECO) {
+      return 'fa-dollar-sign';
+    } else {
+      return 'fa-percentage';
+    }
+  }
+
   private configurarFormulario() {
 		this.form = this.formBuilder.group({
 			tipoAlerta: [null],
