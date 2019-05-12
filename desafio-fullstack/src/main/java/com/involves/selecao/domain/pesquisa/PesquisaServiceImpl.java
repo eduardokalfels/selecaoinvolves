@@ -7,7 +7,6 @@ import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;
-import java.util.ArrayList;
 
 import org.springframework.stereotype.Service;
 
@@ -34,7 +33,7 @@ public class PesquisaServiceImpl implements IPesquisaService {
 		in.close();
 
 		Gson gson = new Gson();
-		Type listaPesquisaType = new TypeToken<ArrayList<Pesquisa>>(){}.getType();
+		Type listaPesquisaType = new TypeToken<List<Pesquisa>>(){}.getType();
 		return gson.fromJson(content.toString(), listaPesquisaType);
 	}
 
