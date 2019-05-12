@@ -22,36 +22,45 @@ import com.mongodb.client.MongoDatabase;
 @Component
 public class AlertaMongoGateway implements AlertaGateway{
 	
+	private static final String CATEGORIA = "categoria";
+	private static final String PRODUTO = "produto";
+	private static final String MARGEM = "margem";
+	private static final String TIPO = "tipo";
+	private static final String DESCRICAO = "descricao";
+	private static final String PONTO_DE_VENDA = "ponto_de_venda";
+	
+	private static final String ALERTAS_COLLECTION = "Alertas";
+	
 	@Autowired
 	private MongoDbFactory mongoFactory;
 
 	@Override
 	public void salvar(Alerta alerta) {
 		MongoDatabase database = mongoFactory.getDb();
-		MongoCollection<Document> collection = database.getCollection("Alertas");
-		Document doc = new Document("ponto_de_venda", alerta.getPontoDeVenda())
-                .append("descricao", alerta.getDescricao())
-                .append("tipo", alerta.getTipo())
-                .append("margem", alerta.getMargem())
-                .append("produto", alerta.getProduto())
-                .append("categoria", alerta.getCategoria());
+		MongoCollection<Document> collection = database.getCollection(ALERTAS_COLLECTION);
+		Document doc = new Document(PONTO_DE_VENDA, alerta.getPontoDeVenda())
+                .append(DESCRICAO, alerta.getDescricao())
+                .append(TIPO, alerta.getTipo())
+                .append(MARGEM, alerta.getMargem())
+                .append(PRODUTO, alerta.getProduto())
+                .append(CATEGORIA, alerta.getCategoria());
 		collection.insertOne(doc);
 	}
 
 	@Override
 	public List<Alerta> buscarTodos() {
 		MongoDatabase database = mongoFactory.getDb();
-		MongoCollection<Document> collection = database.getCollection("Alertas");
+		MongoCollection<Document> collection = database.getCollection(ALERTAS_COLLECTION);
 		FindIterable<Document> db = collection.find();
 		List<Alerta> alertas = new ArrayList<>();
 		for (Document document : db) {
 			Alerta alerta = new Alerta();
-			alerta.setDescricao(document.getString("descricao"));
-			alerta.setTipo(document.getString("tipo"));
-			alerta.setMargem(document.getInteger("margem"));
-			alerta.setPontoDeVenda(document.getString("ponto_de_venda"));
-			alerta.setProduto(document.getString("produto"));
-			alerta.setCategoria(document.getString("categoria"));
+			alerta.setDescricao(document.getString(DESCRICAO));
+			alerta.setTipo(document.getString(TIPO));
+			alerta.setMargem(document.getInteger(MARGEM));
+			alerta.setPontoDeVenda(document.getString(PONTO_DE_VENDA));
+			alerta.setProduto(document.getString(PRODUTO));
+			alerta.setCategoria(document.getString(CATEGORIA));
 			alertas.add(alerta);
 		}
 		return alertas;

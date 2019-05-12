@@ -14,9 +14,6 @@ import com.involves.selecao.domain.alerta.dto.AlertaDTO;
 @RequestMapping("/alertas")
 public class AlertaController {
 
-//	@Autowired
-//	private AlertaService buscaAlertasService;
-	
 	@Autowired
 	private IAlertaService alertaService;
 	

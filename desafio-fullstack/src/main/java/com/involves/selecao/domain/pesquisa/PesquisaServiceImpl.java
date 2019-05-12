@@ -9,6 +9,7 @@ import java.net.URL;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Value;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -18,8 +19,14 @@ import com.involves.selecao.domain.pesquisa.vo.PesquisaVO;
 @Service
 public class PesquisaServiceImpl implements IPesquisaService {
 	
+	/**
+	 * URL definida no application.properties, ou em variável de ambiente
+	 */
+	@Value("${alertas.agile.pesquisas.url}")
+	private String URL_PESQUISAS;
+
 	public List<PesquisaVO> buscarTodas() throws IOException {
-		URL url = new URL("https://selecao-involves.agilepromoter.com/pesquisas");
+		URL url = new URL(URL_PESQUISAS);
 		HttpURLConnection con = (HttpURLConnection) url.openConnection();
 		con.setRequestMethod("GET");
 		
