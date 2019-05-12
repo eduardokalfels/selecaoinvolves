@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.involves.selecao.domain.alerta.dto.AlertaDTO;
+
 @RestController
 @RequestMapping("/alertas")
 public class AlertaController {
@@ -19,7 +21,7 @@ public class AlertaController {
 	private IAlertaService alertaService;
 	
 	@GetMapping
-    public List<Alerta> alertas() {
+    public List<AlertaDTO> alertas() {
 		return alertaService.buscarTodos();
     }
 	

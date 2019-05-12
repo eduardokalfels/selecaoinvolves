@@ -1,8 +1,8 @@
-package com.involves.selecao.domain.alerta;
+package com.involves.selecao.domain.alerta.dto;
 
-import com.involves.selecao.domain.alerta.tipo.TipoAlertaEnum;
+import com.involves.selecao.domain.alerta.dto.tipo.TipoAlertaEnum;
 
-public class AlertaPreco extends Alerta {
+public class AlertaPrecoDTO extends AlertaDTO {
 	
 	private String produto;
 	private Integer margem;

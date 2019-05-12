@@ -12,12 +12,13 @@ import org.springframework.stereotype.Service;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.involves.selecao.domain.alerta.Alerta;
+import com.involves.selecao.domain.alerta.dto.AlertaDTO;
+import com.involves.selecao.domain.pesquisa.vo.PesquisaVO;
 
 @Service
 public class PesquisaServiceImpl implements IPesquisaService {
 	
-	public List<Pesquisa> buscarTodas() throws IOException {
+	public List<PesquisaVO> buscarTodas() throws IOException {
 		URL url = new URL("https://selecao-involves.agilepromoter.com/pesquisas");
 		HttpURLConnection con = (HttpURLConnection) url.openConnection();
 		con.setRequestMethod("GET");
@@ -33,7 +34,7 @@ public class PesquisaServiceImpl implements IPesquisaService {
 		in.close();
 
 		Gson gson = new Gson();
-		Type listaPesquisaType = new TypeToken<List<Pesquisa>>(){}.getType();
+		Type listaPesquisaType = new TypeToken<List<PesquisaVO>>(){}.getType();
 		return gson.fromJson(content.toString(), listaPesquisaType);
 	}
 

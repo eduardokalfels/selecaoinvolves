@@ -1,6 +1,6 @@
-package com.involves.selecao.domain.pesquisa;
+package com.involves.selecao.domain.pesquisa.vo;
 
-public class Resposta {
+public class RespostaVO {
 	
 	private String pergunta;
 	private String resposta;

@@ -1,8 +1,8 @@
-package com.involves.selecao.domain.alerta;
+package com.involves.selecao.domain.alerta.dto;
 
-import com.involves.selecao.domain.alerta.tipo.TipoAlertaEnum;
+import com.involves.selecao.domain.alerta.dto.tipo.TipoAlertaEnum;
 
-public class AlertaRuptura extends Alerta {
+public class AlertaRupturaDTO extends AlertaDTO {
 	
 	private String produto;
 	

@@ -1,4 +1,4 @@
-package com.involves.selecao.domain.alerta.tipo;
+package com.involves.selecao.domain.alerta.dto.tipo;
 
 public enum TipoAlertaEnum {
 

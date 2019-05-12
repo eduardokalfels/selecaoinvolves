@@ -1,8 +1,8 @@
-package com.involves.selecao.domain.alerta;
+package com.involves.selecao.domain.alerta.dto;
 
-import com.involves.selecao.domain.alerta.tipo.TipoAlertaEnum;
+import com.involves.selecao.domain.alerta.dto.tipo.TipoAlertaEnum;
 
-public class AlertaParticipacao extends Alerta {
+public class AlertaParticipacaoDTO extends AlertaDTO {
 	
 	private String categoria;
 	private Integer margem;

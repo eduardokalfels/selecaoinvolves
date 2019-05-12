@@ -1,7 +1,7 @@
-package com.involves.selecao.domain.pesquisa;
+package com.involves.selecao.domain.pesquisa.vo;
 import java.util.List;
 
-public class Pesquisa {
+public class PesquisaVO {
 	private int id;
 	private String rotulo;
 	private String notificante;
@@ -10,7 +10,7 @@ public class Pesquisa {
 	private String preco_estipulado;
 	private String categoria;
 	private String participacao_estipulada;
-	private List<Resposta> respostas;
+	private List<RespostaVO> respostas;
 	
 	public int getId() {
 		return id;
@@ -36,10 +36,10 @@ public class Pesquisa {
 	public void setPonto_de_venda(String ponto_de_venda) {
 		this.ponto_de_venda = ponto_de_venda;
 	}
-	public List<Resposta> getRespostas() {
+	public List<RespostaVO> getRespostas() {
 		return respostas;
 	}
-	public void setRespostas(List<Resposta> respostas) {
+	public void setRespostas(List<RespostaVO> respostas) {
 		this.respostas = respostas;
 	}
 	public String getProduto() {
